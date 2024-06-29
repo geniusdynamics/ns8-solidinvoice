@@ -52,7 +52,8 @@ app_config = {
     'database_port': database_port,
     'database_name': database_name,
     'database_user': database_user,
-    'database_password': database_password
+    'database_password': database_password,
+    "APP_PORT": "8000"
 }
 agent.write_envfile('app.env', app_config)
 
