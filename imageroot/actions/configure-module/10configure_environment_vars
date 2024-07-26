@@ -35,8 +35,8 @@ agent.write_envfile('database.env', db_config)
 # Configure Application Variables
 
 
-SOLIDINVOICE_ENV = data.get('SOLIDINVOICE_ENV', 'dev')
-SOLIDINVOICE_DEBUG = data.get('SOLIDINVOICE_DEBUG', '1')
+SOLIDINVOICE_ENV = data.get('SOLIDINVOICE_ENV', 'prod')
+SOLIDINVOICE_DEBUG = data.get('SOLIDINVOICE_DEBUG', '0')
 database_driver = data.get('database_driver', 'pdo_mysql')
 database_host = data.get('database_host', 'mariadb-app')
 database_port = data.get('database_port', '3306')
