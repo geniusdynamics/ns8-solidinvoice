@@ -22,7 +22,7 @@ ExecStart=/usr/bin/podman run --conmon-pidfile %t/solidinvoice-app.pid \
     --cidfile %t/solidinvoice-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/solidinvoice.pod-id --replace -d --name  solidinvoice-app \
     --volume solidinvoice-app:/opt/srv/:Z \
-    --volume hmtl-config:/var/www/html/config/:Z \
+    --volume hmtl-config:/var/www/html/:Z \
     --env-file=%S/state/app.env \
     ${SOLIDINVOICE_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/solidinvoice-app.ctr-id -t 10
