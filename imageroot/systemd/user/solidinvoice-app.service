@@ -10,20 +10,18 @@ After=solidinvoice.service mariadb-app.service
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
-EnvironmentFile=%S/state/environment
-EnvironmentFile=-%S/state/smarthost.env
-WorkingDirectory=%S/state
+EnvironmentFile=%E/state/environment
+WorkingDirectory=%E/state
 Restart=always
 TimeoutStopSec=70
 ExecStartPre=/bin/mkdir -p tmp
 ExecStartPre=/bin/rm -f %t/solidinvoice-app.pid %t/solidinvoice-app.ctr-id
-ExecStartPre=-runagent discover-smarthost
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/solidinvoice-app.pid \
     --cidfile %t/solidinvoice-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/solidinvoice.pod-id --replace -d --name  solidinvoice-app \
     --volume solidinvoice-app:/opt/srv/:Z \
     --volume html-config:/var/www/html/config/:Z \
-    --env-file=%S/state/app.env \
+    --env-file=%E/state/app.env \
     ${SOLIDINVOICE_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/solidinvoice-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP solidinvoice-app
