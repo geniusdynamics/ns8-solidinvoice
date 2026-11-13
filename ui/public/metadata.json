@@ -1,9 +1,12 @@
 {
   "name": "solidinvoice",
   "description": {
-    "en": "My solidinvoice module"
+    "en": "SolidInvoice is a self-hosted invoicing application to manage clients, quotes, invoices and payments.",
+    "it": "SolidInvoice è un'applicazione di fatturazione self-hosted per gestire clienti, preventivi, fatture e pagamenti."
   },
-  "categories": [],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",
